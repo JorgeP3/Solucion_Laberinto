@@ -6,3 +6,5 @@ class Maqueta:
         self.columnas=columnas
         self.objetivos=objetivos #esto es una caractreres como "X", "Y", exepto "*" o "-"
         self.estructura=estructura
+
+    
