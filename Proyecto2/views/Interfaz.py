@@ -1,5 +1,6 @@
 import tkinter as tk
-
+from tkinter import messagebox
+import webbrowser
 class Interfaz:
     def __init__(self,root:tk.Tk):
         self.root = root
@@ -46,8 +47,6 @@ class Interfaz:
         btnGraficarMaqueta=tk.Button(frmFrameGestionar,text="Graficar Solucion",command=self.graficarSolucion)
         btnGraficarMaqueta.place(x=110,y=95)
 
-
-
     def abrirArchivo(self):
         print("este boton abrira un archivo")
 
@@ -58,10 +57,12 @@ class Interfaz:
         print("Este boton actualizara lo que hay en las listas")
 
     def ayuda(self):
-        print("este boton proporcionara informacion de del estudiante y su documentacion")
-    
+        resultado=messagebox.askquestion("¿Desea ver la documentacion?", "Estudiante: Jorge Estuardo Pumay Soy \nCarnet: 201213421\n https://drive.google.com/drive/u/0/folders/1IPnevElS62--NXbgSsCxPlHbopFFWySJ")
+        if resultado == "yes":
+            webbrowser.open_new("https://drive.google.com/drive/u/0/folders/1IPnevElS62--NXbgSsCxPlHbopFFWySJ")
+            
     def graficarMaqueta(self):
-        print("este boton realizara una imagen con graphviz de la maqueta")
+        print("este boton realizara una imagen con graphviz de la maqueta") 
 
     def graficarSolucion(self):
         print("este boton realizara una imagen con graphviz de la solucion y la maqueta")
