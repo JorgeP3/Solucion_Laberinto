@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
 import webbrowser
+from tkinter import filedialog
+
 class Interfaz:
     def __init__(self,root:tk.Tk):
         self.root = root
@@ -48,7 +50,20 @@ class Interfaz:
         btnGraficarMaqueta.place(x=110,y=95)
 
     def abrirArchivo(self):
-        print("este boton abrira un archivo")
+        try:
+            path = filedialog.askopenfilename(
+                title="Selecciona un archivo",
+                initialdir="C:/Users/lmpgp/Documents/1. Ingenieria en sistemas/1. Introduccion a la computacion 2/Laboratorio IPC2/IPC2_Proyecto2_201213421/Proyecto2",
+                filetypes=(("Archivos de texto", "*.xml"), ("Todos los archivos", "*.*"))
+            )
+            print("Ruta del archivo seleccionado:", path)
+            archivo = open(path, "r", encoding="utf-8")
+            texto_entrada = archivo.read()
+
+            self.txtEntrada.delete("1.0", tk.END)  # Limpiar el contenido existente
+            self.txtEntrada.insert(tk.END, texto_entrada)
+        except FileNotFoundError:
+            print("\033[91mError no se encontró el archivo\033[0m")
 
     def borrar(self):
         print("este boton borrara las listas y tood lo que este en el cuadros de texto")
