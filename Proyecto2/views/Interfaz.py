@@ -72,7 +72,7 @@ class Interfaz:
         print("Este boton actualizara lo que hay en las listas")
 
     def ayuda(self):
-        resultado=messagebox.askquestion("¿Desea ver la documentacion?", "Estudiante: Jorge Estuardo Pumay Soy \nCarnet: 201213421\n https://drive.google.com/drive/u/0/folders/1IPnevElS62--NXbgSsCxPlHbopFFWySJ")
+        resultado=messagebox.askquestion("¿Desea ver la documentacion?", "Estudiante: Jorge Estuardo Pumay Soy \nCarnet: 201213421\nIntroducción a la programación y computacion 2\nSecciónn: N\n\nhttps://drive.google.com/drive/u/0/folders/1IPnevElS62--NXbgSsCxPlHbopFFWySJ")
         if resultado == "yes":
             webbrowser.open_new("https://drive.google.com/drive/u/0/folders/1IPnevElS62--NXbgSsCxPlHbopFFWySJ")
             
