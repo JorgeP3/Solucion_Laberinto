@@ -3,7 +3,9 @@ from models.Nodo_estructura import Nodo_estructura
 class ListaEstructuras:
     def __init__(self):
         self.primero = None
-                           #ingresa un objeto tipo maqueta
+        self.filas=0
+        self.columnas=0
+                           #ingresa un objeto tipo 
     def insertar_estructura(self,estructura):
         if self.primero is None:
             self.primero = Nodo_estructura(estructura=estructura)
@@ -19,5 +21,13 @@ class ListaEstructuras:
             print("     Fila:",actual.estructura.fila, "Columna:",actual.estructura.columna, "Caracter:",actual.estructura.caracter )
             actual=actual.siguiente
 
-    def imprimir_matriz_estructuras(self):
+    def imprimir_matriz_estructuras(self,filas, columnas):
         pass
+
+    def txt_estructura(self):
+        actual=self.primero
+        text=""
+        while actual !=None:
+            text+=actual.estructura.caracter
+            actual=actual.siguiente
+        return text

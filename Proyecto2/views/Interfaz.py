@@ -1,11 +1,13 @@
 #Listas
 from controllers.ListaMaquetas import ListaMaquetas
 from controllers.ListaObjetivos import ListaObjetivos
+from controllers.ListaEstructuras import ListaEstructuras
 
 #Clases
 from models.Maqueta import Maqueta
 from models.Entrada import Entrada
 from models.Objetivo import Objetivo
+from models.Estructura import Estructura
 
 #Librerias
 import tkinter as tk
@@ -78,28 +80,59 @@ class Interfaz:
             maquetas=xml.getElementsByTagName("maqueta")
 
             for maqueta in maquetas:
+                #listas
+                lista_objetivos=ListaObjetivos()
+                lista_estructuras=ListaEstructuras()
+                #VARIBLES MAQUETA
+                nombreMaqueta=(maqueta.getElementsByTagName("nombre")[0].firstChild.data)
+                filasMaqueta=int(maqueta.getElementsByTagName("filas")[0].firstChild.data)
+                columnasMaqueta=int(maqueta.getElementsByTagName("columnas")[0].firstChild.data)
+
                 entrada=maqueta.getElementsByTagName("entrada")[0]
+
+                #objetivos
                 objetivos=maqueta.getElementsByTagName("objetivos")[0]
                 objetivoL=objetivos.getElementsByTagName("objetivo")
-                lista_objetivos=ListaObjetivos()
+                
+                #lista de objetivos
                 for objetivo in objetivoL:
-                    nuevoObjetivo=Objetivo(objetivo.getElementsByTagName("nombre")[0].firstChild.data,
-                                           objetivo.getElementsByTagName("fila")[0].firstChild.data,
-                                           objetivo.getElementsByTagName("columna")[0].firstChild.data)
+                    nombreObjetivo=objetivo.getElementsByTagName("nombre")[0].firstChild.data
+                    filaObjetivo=int(objetivo.getElementsByTagName("fila")[0].firstChild.data)
+                    columnaObjetivo=int(objetivo.getElementsByTagName("columna")[0].firstChild.data)
+
+                    nuevoObjetivo=Objetivo(nombreObjetivo.strip(),
+                                           filaObjetivo,
+                                           columnaObjetivo)
                     lista_objetivos.insertar_objetivo(nuevoObjetivo)
+
+                estructura=maqueta.getElementsByTagName("estructura")[0].firstChild.data
+                estructuraSE=estructura.strip()
+
+                for i in range(filasMaqueta):
+                    for j in range(columnasMaqueta):
+                        indice = i * columnasMaqueta + j
+                        if indice < len(estructuraSE):
+                            lista_estructuras.insertar_estructura(Estructura(i,j,estructuraSE[indice]))
 
                 
                 nuevaEntrada=Entrada(int(entrada.getElementsByTagName("fila")[0].firstChild.data),
                                      int(entrada.getElementsByTagName("columna")[0].firstChild.data))
-                nuevaMaqueta=Maqueta(maqueta.getElementsByTagName("nombre")[0].firstChild.data,
-                                     int(maqueta.getElementsByTagName("filas")[0].firstChild.data),
-                                     int(maqueta.getElementsByTagName("columnas")[0].firstChild.data),
-                                     nuevaEntrada,lista_objetivos,"")
+                
+                #creacion del objeto maqueta
+                nuevaMaqueta=Maqueta(nombreMaqueta.strip(),
+                                     filasMaqueta,
+                                     columnasMaqueta,
+                                     nuevaEntrada,
+                                     lista_objetivos,
+                                     lista_estructuras)
                 
                 lista_maquetas.insertar_maqueta(nuevaMaqueta)
             
             lista_maquetas.imprimir_lista_maquetas()
             #lista_objetivos.imprimir_lista_objetivos()
+
+            self.txtEntrada.delete("1.0", tk.END)  # Limpiar el contenido existente
+            self.txtEntrada.insert(tk.END, lista_maquetas.txt_maquetas())
 
             '''
             archivo = open(path, "r", encoding="utf-8")

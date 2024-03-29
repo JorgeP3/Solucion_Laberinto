@@ -1,5 +1,5 @@
 from models.Nodo_objetivo import Nodo_objetivo
-
+#los objetivos no pueden ir adentro de una pared
 class ListaObjetivos:
     def __init__(self):
         self.primero = None
@@ -21,3 +21,14 @@ class ListaObjetivos:
             print("     Columna:",actual.objetivo.columna)
             print("     -------------")
             actual=actual.siguiente
+    
+    def txt_objetivos(self):
+        actual=self.primero
+        text=""
+        while actual !=None:
+            text+="     Nombre:"+actual.objetivo.nombre+"\n"
+            text+="     Fila:"+str(actual.objetivo.fila)+"\n"
+            text+="     Columna:"+str(actual.objetivo.columna)+"\n"
+            text+="     -------------\n"
+            actual=actual.siguiente
+        return text

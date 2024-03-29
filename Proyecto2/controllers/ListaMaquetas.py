@@ -26,7 +26,28 @@ class ListaMaquetas:
             print("     Caracter:",actual.maqueta.entrada.caracter)
             print("Objetivos:")
             actual.maqueta.lista_objetivos.imprimir_lista_objetivos()
-
-
+            print("Estructura:")
+            print("     "+actual.maqueta.lista_estructuras.txt_estructura())
+            #actual.maqueta.lista_estructuras.imprimir_lista_estructuras()
             actual=actual.siguiente
+
+    def txt_maquetas(self):
+        actual=self.primero
+        text=""
+        while actual !=None:
+            text+="======================================\n"
+            text+="Nombre: "+actual.maqueta.nombre+"\n"
+            text+="Filas: "+str(actual.maqueta.filas)+"\n"
+            text+="Columnas: "+str(actual.maqueta.columnas)+"\n"
+            text+="Entrada "+"\n"
+            text+="     Fila: "+str(actual.maqueta.entrada.fila)+"\n"
+            text+="     Columna: "+str(actual.maqueta.entrada.columna)+"\n"
+            text+="     Caracter: "+actual.maqueta.entrada.caracter+"\n"
+            text+="Objetivos: "+"\n"
+            text+=actual.maqueta.lista_objetivos.txt_objetivos()
+            text+="Estructura: "+"\n"
+            text+="     "+actual.maqueta.lista_estructuras.txt_estructura()+"\n"
+            #actual.maqueta.lista_estructuras.imprimir_lista_estructuras()
+            actual=actual.siguiente
+        return text
 
