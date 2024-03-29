@@ -1,7 +1,22 @@
+#Listas
+from controllers.ListaMaquetas import ListaMaquetas
+from controllers.ListaObjetivos import ListaObjetivos
+
+#Clases
+from models.Maqueta import Maqueta
+from models.Entrada import Entrada
+from models.Objetivo import Objetivo
+
+#Librerias
 import tkinter as tk
 from tkinter import messagebox
 import webbrowser
 from tkinter import filedialog
+from xml.dom import minidom
+
+#instancia global de la lista maquetas
+lista_maquetas=ListaMaquetas()
+lista_objetivos=ListaObjetivos()
 
 class Interfaz:
     def __init__(self,root:tk.Tk):
@@ -57,11 +72,31 @@ class Interfaz:
                 filetypes=(("Archivos de texto", "*.xml"), ("Todos los archivos", "*.*"))
             )
             print("Ruta del archivo seleccionado:", path)
+            
+            xml=minidom.parse(path)
+            maquetas=xml.getElementsByTagName("maqueta")
+
+            for maqueta in maquetas:
+                entrada=maqueta.getElementsByTagName("entrada")[0]
+                
+                nuevaEntrada=Entrada(int(entrada.getElementsByTagName("fila")[0].firstChild.data),
+                                     int(entrada.getElementsByTagName("columna")[0].firstChild.data))
+                nuevaMaqueta=Maqueta(maqueta.getElementsByTagName("nombre")[0].firstChild.data,
+                                     int(maqueta.getElementsByTagName("filas")[0].firstChild.data),
+                                     int(maqueta.getElementsByTagName("columnas")[0].firstChild.data),
+                                     nuevaEntrada,"","")
+                
+                lista_maquetas.insertar_maqueta(nuevaMaqueta)
+            
+            lista_maquetas.imprimir_lista_maquetas()
+
+            '''
             archivo = open(path, "r", encoding="utf-8")
             texto_entrada = archivo.read()
 
             self.txtEntrada.delete("1.0", tk.END)  # Limpiar el contenido existente
             self.txtEntrada.insert(tk.END, texto_entrada)
+            '''
         except FileNotFoundError:
             print("\033[91mError no se encontró el archivo\033[0m")
 

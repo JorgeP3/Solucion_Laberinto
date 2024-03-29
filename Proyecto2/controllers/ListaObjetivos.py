@@ -1,17 +1,17 @@
-from models.Nodo_maqueta import Nodo_maqueta
+from models.Nodo_objetivo import Nodo_objetivo
 
-class ListaMaquetas:
+class ListaObjetivos:
     def __init__(self):
         self.primero = None
                            #ingresa un objeto tipo maqueta
-    def insertar_maqueta(self,maqueta):
+    def insertar_maqueta(self,objetivo):
         if self.primero is None:
-            self.primero = Nodo_maqueta(maqueta=maqueta)
+            self.primero = Nodo_objetivo(objetivo=objetivo)
             return
         actual= self.primero
         while actual.siguiente:
             actual = actual.siguiente
-        actual.siguiente = Nodo_maqueta(maqueta=maqueta)
+        actual.siguiente = Nodo_objetivo(objetivo=objetivo)
 
     def imprimir_lista_maquetas(self):
         actual=self.primero
@@ -27,4 +27,3 @@ class ListaMaquetas:
 
 
             actual=actual.siguiente
-
