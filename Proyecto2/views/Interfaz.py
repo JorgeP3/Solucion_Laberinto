@@ -16,8 +16,9 @@ from xml.dom import minidom
 
 #instancia global de la lista maquetas
 lista_maquetas=ListaMaquetas()
-lista_objetivos=ListaObjetivos()
-
+#lista_objetivos=ListaObjetivos() esta instancia me creaba problemas
+#en esta lista se guardaban todos los objetos "objetivo" de todas las maquetas
+#no solamente a los que si pertenecian, se movio la instancia mas abajo y funciono
 class Interfaz:
     def __init__(self,root:tk.Tk):
         self.root = root
@@ -78,17 +79,27 @@ class Interfaz:
 
             for maqueta in maquetas:
                 entrada=maqueta.getElementsByTagName("entrada")[0]
+                objetivos=maqueta.getElementsByTagName("objetivos")[0]
+                objetivoL=objetivos.getElementsByTagName("objetivo")
+                lista_objetivos=ListaObjetivos()
+                for objetivo in objetivoL:
+                    nuevoObjetivo=Objetivo(objetivo.getElementsByTagName("nombre")[0].firstChild.data,
+                                           objetivo.getElementsByTagName("fila")[0].firstChild.data,
+                                           objetivo.getElementsByTagName("columna")[0].firstChild.data)
+                    lista_objetivos.insertar_objetivo(nuevoObjetivo)
+
                 
                 nuevaEntrada=Entrada(int(entrada.getElementsByTagName("fila")[0].firstChild.data),
                                      int(entrada.getElementsByTagName("columna")[0].firstChild.data))
                 nuevaMaqueta=Maqueta(maqueta.getElementsByTagName("nombre")[0].firstChild.data,
                                      int(maqueta.getElementsByTagName("filas")[0].firstChild.data),
                                      int(maqueta.getElementsByTagName("columnas")[0].firstChild.data),
-                                     nuevaEntrada,"","")
+                                     nuevaEntrada,lista_objetivos,"")
                 
                 lista_maquetas.insertar_maqueta(nuevaMaqueta)
             
             lista_maquetas.imprimir_lista_maquetas()
+            #lista_objetivos.imprimir_lista_objetivos()
 
             '''
             archivo = open(path, "r", encoding="utf-8")

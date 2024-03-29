@@ -24,6 +24,8 @@ class ListaMaquetas:
             print("     Fila:",actual.maqueta.entrada.fila)
             print("     Columna:",actual.maqueta.entrada.columna)
             print("     Caracter:",actual.maqueta.entrada.caracter)
+            print("Objetivos:")
+            actual.maqueta.lista_objetivos.imprimir_lista_objetivos()
 
 
             actual=actual.siguiente
