@@ -17,7 +17,7 @@ class ListaObjetivos:
         actual=self.primero
         while actual !=None:
             print("     Nombre:",actual.objetivo.nombre)
-            print("     Filas:",actual.objetivo.fila)
-            print("     Columnas:",actual.objetivo.columna)
+            print("     Fila:",actual.objetivo.fila)
+            print("     Columna:",actual.objetivo.columna)
             print("     -------------")
             actual=actual.siguiente
