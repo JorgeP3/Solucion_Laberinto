@@ -47,11 +47,10 @@ class Interfaz:
         self.txtEntrada=tk.Text(self.root,width=40, height=20)
         self.txtEntrada.place(x=10,y=80)
 
-
+        #FRAME
         frmFrameGestionar=tk.Frame(self.root,width=220, height=220,borderwidth=2, relief="ridge", bg="lightgrey")
         frmFrameGestionar.place(x=350,y=125)
 
-        #form
         lblframe=tk.Label(frmFrameGestionar, text="Gestionar maqueta")
         lblframe.place(x=60,y=5)
 
@@ -66,6 +65,9 @@ class Interfaz:
 
         btnGraficarMaqueta=tk.Button(frmFrameGestionar,text="Graficar Solucion",command=self.graficarSolucion)
         btnGraficarMaqueta.place(x=110,y=95)
+
+        btnOrdebarMaqueta=tk.Button(frmFrameGestionar,text="Ordenar Maquetas \npor nombre",command=self.ordenarLista)
+        btnOrdebarMaqueta.place(x=55,y=125)
 
     def abrirArchivo(self):
         try:
@@ -129,7 +131,6 @@ class Interfaz:
                 lista_maquetas.insertar_maqueta(nuevaMaqueta)
             
             lista_maquetas.imprimir_lista_maquetas()
-            #lista_objetivos.imprimir_lista_objetivos()
 
             self.txtEntrada.delete("1.0", tk.END)  # Limpiar el contenido existente
             self.txtEntrada.insert(tk.END, lista_maquetas.txt_maquetas())
@@ -145,7 +146,8 @@ class Interfaz:
             print("\033[91mError no se encontró el archivo\033[0m")
 
     def borrar(self):
-        print("este boton borrara las listas y tood lo que este en el cuadros de texto")
+        pass
+        #lista_maquetas=ListaMaquetas()
     
     def actualizar(self):
         print("Este boton actualizara lo que hay en las listas")
@@ -160,3 +162,8 @@ class Interfaz:
 
     def graficarSolucion(self):
         print("este boton realizara una imagen con graphviz de la solucion y la maqueta")
+
+    def ordenarLista(self):
+        lista_maquetas.ordenar_maquetas_por_nombre()
+        self.txtEntrada.delete("1.0", tk.END)  # Limpiar el contenido existente
+        self.txtEntrada.insert(tk.END, lista_maquetas.txt_maquetas())

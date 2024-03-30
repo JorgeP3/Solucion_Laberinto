@@ -50,4 +50,19 @@ class ListaMaquetas:
             #actual.maqueta.lista_estructuras.imprimir_lista_estructuras()
             actual=actual.siguiente
         return text
+    
+    def ordenar_maquetas_por_nombre(self):
+        if self.primero is None:
+            return
+        actual = self.primero
+        while actual:
+            minimo = actual
+            siguiente = actual.siguiente
+            while siguiente:
+                if siguiente.maqueta.nombre < minimo.maqueta.nombre:
+                    minimo = siguiente
+                siguiente = siguiente.siguiente
+            if minimo != actual:
+                actual.maqueta, minimo.maqueta = minimo.maqueta, actual.maqueta
+            actual = actual.siguiente
 
