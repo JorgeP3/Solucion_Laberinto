@@ -12,7 +12,15 @@ class ListaMaquetas:
         while actual.siguiente:
             actual = actual.siguiente
         actual.siguiente = Nodo_maqueta(maqueta=maqueta)
-
+    
+      #busca las maquetas por nombre de maqueta y devuelve el objeto    
+    def buscar_maqueta_nombre(self,nombreMaqueta):
+        actual=self.primero
+        while actual:
+            if actual.maqueta.nombre==nombreMaqueta:
+                return actual.maqueta
+            actual=actual.siguiente
+        return None
     def imprimir_lista_maquetas(self):
         actual=self.primero
         while actual !=None:

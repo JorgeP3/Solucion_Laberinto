@@ -120,15 +120,17 @@ class Interfaz:
                 nuevaEntrada=Entrada(int(entrada.getElementsByTagName("fila")[0].firstChild.data),
                                      int(entrada.getElementsByTagName("columna")[0].firstChild.data))
                 
-                #creacion del objeto maqueta
-                nuevaMaqueta=Maqueta(nombreMaqueta.strip(),
-                                     filasMaqueta,
-                                     columnasMaqueta,
-                                     nuevaEntrada,
-                                     lista_objetivos,
-                                     lista_estructuras)
-                
-                lista_maquetas.insertar_maqueta(nuevaMaqueta)
+                if lista_maquetas.buscar_maqueta_nombre(nombreMaqueta.strip()):
+                    messagebox.showerror("Error", f"El nombre de maqueta  «{nombreMaqueta.strip()}» ya existe, no se pudo almacenar")
+                else:
+                    nuevaMaqueta=Maqueta(nombreMaqueta.strip(),
+                                        filasMaqueta,
+                                        columnasMaqueta,
+                                        nuevaEntrada,
+                                        lista_objetivos,
+                                        lista_estructuras)
+                    
+                    lista_maquetas.insertar_maqueta(nuevaMaqueta)
             
             lista_maquetas.imprimir_lista_maquetas()
 
@@ -146,8 +148,9 @@ class Interfaz:
             print("\033[91mError no se encontró el archivo\033[0m")
 
     def borrar(self):
-        pass
-        #lista_maquetas=ListaMaquetas()
+        global lista_maquetas
+        lista_maquetas = ListaMaquetas()
+        self.txtEntrada.delete("1.0", tk.END)
     
     def actualizar(self):
         print("Este boton actualizara lo que hay en las listas")
