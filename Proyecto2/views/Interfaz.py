@@ -157,7 +157,8 @@ class Interfaz:
         self.txtEntrada.delete("1.0", tk.END)
     
     def actualizar(self):
-        print("Este boton actualizara lo que hay en las listas")
+        self.txtEntrada.delete("1.0", tk.END)  # Limpiar el contenido existente
+        self.txtEntrada.insert(tk.END, lista_maquetas.txt_maquetas())
 
     def ayuda(self):
         resultado=messagebox.askquestion("¿Desea ver la documentacion?", "Estudiante: Jorge Estuardo Pumay Soy \nCarnet: 201213421\nIntroducción a la programación y computacion 2\nSecciónn: N\n\nhttps://drive.google.com/drive/u/0/folders/1IPnevElS62--NXbgSsCxPlHbopFFWySJ")
@@ -166,8 +167,18 @@ class Interfaz:
             
     def graficarMaqueta(self):
         nombre=self.txtNompreMaqueta.get()
+        maquetaG=lista_maquetas.buscar_maqueta_nombre(nombre)
 
-        lista_maquetas.imprimir_maqueta_consola(nombre)
+        if maquetaG:
+            #AQUI SE GRAFICA LA MAQUETA
+            self.reemplazarYgraficar(maquetaG)
+            #####
+        elif nombre=="":
+            messagebox.showerror("Error", f"No se ha ingresado ningun nombre")
+        else:
+            messagebox.showerror("Error", f"No se encontró la maqueta con nombre «{nombre}» ")
+            
+        
 
     def graficarSolucion(self):
         print("este boton realizara una imagen con graphviz de la solucion y la maqueta")
@@ -176,3 +187,36 @@ class Interfaz:
         lista_maquetas.ordenar_maquetas_por_nombre()
         self.txtEntrada.delete("1.0", tk.END)  # Limpiar el contenido existente
         self.txtEntrada.insert(tk.END, lista_maquetas.txt_maquetas())
+
+    def reemplazarYgraficar(self,maquetaG):#se debe ingresar un objeto maqueta
+        nombreM=maquetaG.nombre
+        filasM=maquetaG.filas
+        columnasM=maquetaG.columnas
+        filaEntrada=maquetaG.entrada.fila
+        columnaEntrada=maquetaG.entrada.columna
+        caracterEntrada=maquetaG.entrada.caracter
+
+        lista_objetivos=maquetaG.lista_objetivos
+        lista_estructurasM=maquetaG.lista_estructuras
+
+
+        if lista_estructurasM.devolver_caracter(filaEntrada,columnaEntrada)=="-": 
+            lista_estructurasM.reemplazarCaracter(filaEntrada,columnaEntrada,caracterEntrada)
+        elif lista_estructurasM.devolver_caracter(filaEntrada,columnaEntrada)=="*":
+            messagebox.showerror("Error", "No se puede colocar el inicio en una pared")
+        else:
+            messagebox.showerror("Error", "coordenada incorrecta")
+
+        for objetivo in lista_objetivos:
+            if lista_estructurasM.devolver_caracter(objetivo.fila,objetivo.columna)=="-":
+                lista_estructurasM.reemplazarCaracter(objetivo.fila, objetivo.columna, objetivo.nombre)
+            elif lista_estructurasM.devolver_caracter(objetivo.fila,objetivo.columna)=="*":
+                messagebox.showerror("Error", "No se puede colocar un objetivo en una pared")
+            elif lista_estructurasM.devolver_caracter(objetivo.fila,objetivo.columna)=="+":
+                messagebox.showerror("Error", "No se puede colocar un objetivo en el inicio")
+            else:
+                messagebox.showerror("Error", "Objetivo en posicion incorrecta")
+    
+        
+
+        lista_estructurasM.imprimir_lista_estructuras()

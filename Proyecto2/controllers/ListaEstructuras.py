@@ -1,3 +1,4 @@
+from tkinter import messagebox
 from models.Nodo_estructura import Nodo_estructura
 
 class ListaEstructuras:
@@ -21,8 +22,16 @@ class ListaEstructuras:
             print("     Fila:",actual.estructura.fila, "Columna:",actual.estructura.columna, "Caracter:",actual.estructura.caracter )
             actual=actual.siguiente
 
-    def imprimir_matriz_estructuras(self,filas, columnas):
-        pass
+    def reemplazarCaracter(self,fila,columna,caracter):
+        actual=self.primero
+        while actual:
+            if actual.estructura.fila==fila and actual.estructura.columna==columna and actual.estructura.caracter=="-":             
+                actual.estructura.caracter=caracter
+                print("se actualizo el caracter")
+                return
+            actual=actual.siguiente
+        messagebox.showerror("Error", "No se encontro la coordenada")
+
 
     def txt_estructura(self):
         actual=self.primero
@@ -38,4 +47,10 @@ class ListaEstructuras:
             if actual.estructura.fila==fila and actual.estructura.columna==columna:
                 return actual.estructura.caracter
             actual=actual.siguiente
+
+    def __iter__(self):
+        actual = self.primero
+        while actual:
+            yield actual.estructura
+            actual = actual.siguiente
     

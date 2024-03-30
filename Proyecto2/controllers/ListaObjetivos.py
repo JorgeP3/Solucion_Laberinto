@@ -32,3 +32,9 @@ class ListaObjetivos:
             text+="     -------------\n"
             actual=actual.siguiente
         return text
+    
+    def __iter__(self):
+        actual = self.primero
+        while actual:
+            yield actual.objetivo
+            actual = actual.siguiente

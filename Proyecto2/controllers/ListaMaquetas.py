@@ -38,7 +38,6 @@ class ListaMaquetas:
             print("")
             self.imprimir_maqueta_consola(actual.maqueta.nombre)
             #print("     "+actual.maqueta.lista_estructuras.txt_estructura())
-            print("")
             #actual.maqueta.lista_estructuras.imprimir_lista_estructuras()
             actual=actual.siguiente
 
@@ -57,7 +56,7 @@ class ListaMaquetas:
             text+="Objetivos: "+"\n"
             text+=actual.maqueta.lista_objetivos.txt_objetivos()#imprima la lista de este objeto en espesifico
             text+="Estructura: "+"\n\n"
-            text+=self.txt_imprimir_maqueta(actual.maqueta.nombre)+"\n"
+            text+=self.txt_imprimir_maqueta(actual.maqueta.nombre)
             #actual.maqueta.lista_estructuras.imprimir_lista_estructuras()
             actual=actual.siguiente
         return text
