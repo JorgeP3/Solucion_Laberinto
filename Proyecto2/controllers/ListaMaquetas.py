@@ -35,7 +35,10 @@ class ListaMaquetas:
             print("Objetivos:")
             actual.maqueta.lista_objetivos.imprimir_lista_objetivos()
             print("Estructura:")
-            print("     "+actual.maqueta.lista_estructuras.txt_estructura())
+            print("")
+            self.imprimir_maqueta_consola(actual.maqueta.nombre)
+            #print("     "+actual.maqueta.lista_estructuras.txt_estructura())
+            print("")
             #actual.maqueta.lista_estructuras.imprimir_lista_estructuras()
             actual=actual.siguiente
 
@@ -52,9 +55,9 @@ class ListaMaquetas:
             text+="     Columna: "+str(actual.maqueta.entrada.columna)+"\n"
             text+="     Caracter: "+actual.maqueta.entrada.caracter+"\n"
             text+="Objetivos: "+"\n"
-            text+=actual.maqueta.lista_objetivos.txt_objetivos()
-            text+="Estructura: "+"\n"
-            text+="     "+actual.maqueta.lista_estructuras.txt_estructura()+"\n"
+            text+=actual.maqueta.lista_objetivos.txt_objetivos()#imprima la lista de este objeto en espesifico
+            text+="Estructura: "+"\n\n"
+            text+=self.txt_imprimir_maqueta(actual.maqueta.nombre)+"\n"
             #actual.maqueta.lista_estructuras.imprimir_lista_estructuras()
             actual=actual.siguiente
         return text
@@ -73,4 +76,21 @@ class ListaMaquetas:
             if minimo != actual:
                 actual.maqueta, minimo.maqueta = minimo.maqueta, actual.maqueta
             actual = actual.siguiente
+    
+    def imprimir_maqueta_consola(self,nombre):
+        maquetaG=self.buscar_maqueta_nombre(nombre)
+        for i in range(0,maquetaG.filas):
+            for j in range(0,maquetaG.columnas):
+                print(maquetaG.lista_estructuras.devolver_caracter(i,j),end=" ")
+            print("")
+        print("")
 
+    def txt_imprimir_maqueta(self,nombre):
+        text=""
+        maquetaG=self.buscar_maqueta_nombre(nombre)
+        for i in range(0,maquetaG.filas):
+            for j in range(0,maquetaG.columnas):
+                text+=maquetaG.lista_estructuras.devolver_caracter(i,j)
+            text+="\n"
+        text+="\n"
+        return text

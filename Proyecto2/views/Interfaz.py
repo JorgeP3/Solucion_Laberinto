@@ -27,7 +27,11 @@ class Interfaz:
 
         self.root.title("Ventana Principal")
         self.root.geometry("600x450")
+        #self.lista_maquetas=ListaMaquetas() tamvbien pude definir aqui la lista
+        #y acceder a ella desde cualquier metodo utilizando "self"
+        self.cargarWidgets()
 
+    def cargarWidgets(self):
         #ventana principal
         btnAbrir=tk.Button(self.root,text="Cargar Archivo XML",command=self.abrirArchivo)
         btnAbrir.place(x=10,y=5)
@@ -161,7 +165,9 @@ class Interfaz:
             webbrowser.open_new("https://drive.google.com/drive/u/0/folders/1IPnevElS62--NXbgSsCxPlHbopFFWySJ")
             
     def graficarMaqueta(self):
-        print("este boton realizara una imagen con graphviz de la maqueta") 
+        nombre=self.txtNompreMaqueta.get()
+
+        lista_maquetas.imprimir_maqueta_consola(nombre)
 
     def graficarSolucion(self):
         print("este boton realizara una imagen con graphviz de la solucion y la maqueta")

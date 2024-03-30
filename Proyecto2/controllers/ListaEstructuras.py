@@ -31,3 +31,11 @@ class ListaEstructuras:
             text+=actual.estructura.caracter
             actual=actual.siguiente
         return text
+    
+    def devolver_caracter(self,fila,columna):
+        actual=self.primero
+        while actual !=None:
+            if actual.estructura.fila==fila and actual.estructura.columna==columna:
+                return actual.estructura.caracter
+            actual=actual.siguiente
+    
