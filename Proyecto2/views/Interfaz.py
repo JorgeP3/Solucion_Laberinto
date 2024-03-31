@@ -168,7 +168,7 @@ class Interfaz:
             
     def graficarMaqueta(self):
         nombre=self.txtNompreMaqueta.get()
-        ##se crea un nuevo objeto
+        
         maquetaG=lista_maquetas.buscar_maqueta_nombre(nombre)
 
         txtEstructuras=maquetaG.lista_estructuras.txt_estructura()
@@ -180,7 +180,7 @@ class Interfaz:
                 indice = i * maquetaG.columnas + j
                 if indice < len(txtEstructuras):
                     nueva_lista_estructuras.insertar_estructura(Estructura(i,j,txtEstructuras[indice]))
-
+        ##se crea un nuevo objeto
         nuevoObjetoMaqueta=Maqueta(maquetaG.nombre,maquetaG.filas,maquetaG.columnas,
                                    maquetaG.entrada,maquetaG.lista_objetivos,
                                    nueva_lista_estructuras)
@@ -194,11 +194,6 @@ class Interfaz:
         else:
             messagebox.showerror("Error", f"No se encontró la maqueta con nombre «{nombre}» ")
             
-        
-
-    def graficarSolucion(self):
-        print("este boton realizara una imagen con graphviz de la solucion y la maqueta")
-
     def ordenarLista(self):
         lista_maquetas.ordenar_maquetas_por_nombre()
         self.txtEntrada.delete("1.0", tk.END)  # Limpiar el contenido existente
@@ -230,6 +225,7 @@ class Interfaz:
                 #funcion graficar
             elif lista_estructurasM.devolver_caracter(objetivo.fila,objetivo.columna)=="*":
                 messagebox.showerror("Error", "No se puede colocar un objetivo en una pared")
+
             elif lista_estructurasM.devolver_caracter(objetivo.fila,objetivo.columna)=="+":
                 messagebox.showerror("Error", "No se puede colocar un objetivo en el inicio")
             else:
@@ -237,7 +233,7 @@ class Interfaz:
 
         self.graficarConGraphviz(lista_estructurasM,filasM,columnasM,"MaquetaInicial.dot")
 
-        lista_estructurasM.imprimir_lista_estructuras()
+        #lista_estructurasM.imprimir_lista_estructuras()
     
     def graficarConGraphviz(self,lista_estructuras,filas,columnas,nombreArchivo):
         
@@ -249,11 +245,11 @@ class Interfaz:
                 if lista_estructuras.devolver_caracter(i,j)=="*":#pared
                     texto+=f"<td bgcolor='black' width='25' height='25'>"+str(lista_estructuras.devolver_caracter(i,j))+"</td>\n" #columna
                 elif lista_estructuras.devolver_caracter(i,j)=="-": #camino
-                    texto+=f"<td bgcolor='white' width='25' height='25'>"+str(lista_estructuras.devolver_caracter(i,j))+"</td>\n"
+                    texto+=f"<td bgcolor='white' width='25' height='25'><font color='white'>"+str(lista_estructuras.devolver_caracter(i,j))+"</font></td>\n"
                 elif lista_estructuras.devolver_caracter(i,j)=="+":#inicio
-                    texto+=f"<td bgcolor='lime' width='25' height='25'>"+str(lista_estructuras.devolver_caracter(i,j))+"</td>\n"
+                    texto+=f"<td bgcolor='lime' width='25' height='25'><font color='lime'>"+str(lista_estructuras.devolver_caracter(i,j))+"</font></td>\n"
                 elif lista_estructuras.devolver_caracter(i,j)=="#": #solucion
-                    texto+=f"<td bgcolor='aqua' width='25' height='25'>"+str(lista_estructuras.devolver_caracter(i,j))+"</td>\n"
+                    texto+=f"<td bgcolor='aqua' width='25' height='25'><font color='aqua'>"+str(lista_estructuras.devolver_caracter(i,j))+"</font></td>\n"
                 else: #objetivos
                     texto+=f"<td bgcolor='tomato' width='25' height='25'>"+str(lista_estructuras.devolver_caracter(i,j))+"</td>\n"
             texto+="</tr>\n"
@@ -264,3 +260,22 @@ class Interfaz:
         dot.node('tab', texto)
 
         dot.render(directory='', view=True)
+    
+    def graficarSolucion(self):
+        nombre=self.txtNompreMaqueta.get()
+        
+        maquetaG=lista_maquetas.buscar_maqueta_nombre(nombre)
+
+        txtEstructuras=maquetaG.lista_estructuras.txt_estructura()
+        print(txtEstructuras)
+
+        nueva_lista_estructuras=ListaEstructuras()
+        for i in range(maquetaG.filas):
+            for j in range(maquetaG.columnas):
+                indice = i * maquetaG.columnas + j
+                if indice < len(txtEstructuras):
+                    nueva_lista_estructuras.insertar_estructura(Estructura(i,j,txtEstructuras[indice]))
+        ##se crea un nuevo objeto
+        nuevoObjetoMaqueta=Maqueta(maquetaG.nombre,maquetaG.filas,maquetaG.columnas,
+                                   maquetaG.entrada,maquetaG.lista_objetivos,
+                                   nueva_lista_estructuras)
