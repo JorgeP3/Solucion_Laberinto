@@ -218,7 +218,7 @@ class Interfaz:
         else:
             messagebox.showerror("Error", "coordenada incorrecta")
 
-        for objetivo in lista_objetivos:
+        for objetivo in lista_objetivos:#por cada objetivo de la lista objetivos, se remplaza en la lista de estructuras
             if lista_estructurasM.devolver_caracter(objetivo.fila,objetivo.columna)=="-":
                 lista_estructurasM.reemplazarCaracter(objetivo.fila, objetivo.columna, objetivo.nombre)
                 
@@ -270,6 +270,7 @@ class Interfaz:
         print(txtEstructuras)
 
         nueva_lista_estructuras=ListaEstructuras()
+        lista_solucion=ListaEstructuras()
         for i in range(maquetaG.filas):
             for j in range(maquetaG.columnas):
                 indice = i * maquetaG.columnas + j
