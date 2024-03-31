@@ -93,3 +93,11 @@ class ListaMaquetas:
             text+="\n"
         text+="\n"
         return text
+    
+    def clonar(self):
+        nueva_lista = ListaMaquetas()  # Creamos una nueva instancia de ListaMaquetas
+        actual = self.primero
+        while actual:
+            nueva_lista.insertar_maqueta(actual.maqueta)  # Insertamos una copia del objeto maqueta en la nueva lista
+            actual = actual.siguiente
+        return nueva_lista

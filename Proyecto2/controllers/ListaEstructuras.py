@@ -47,6 +47,13 @@ class ListaEstructuras:
             if actual.estructura.fila==fila and actual.estructura.columna==columna:
                 return actual.estructura.caracter
             actual=actual.siguiente
+    def clonar(self):
+        nueva_lista = ListaEstructuras()  # Creamos una nueva instancia de ListaMaquetas
+        actual = self.primero
+        while actual:
+            nueva_lista.insertar_estructura(actual.estructura)  # Insertamos una copia del objeto maqueta en la nueva lista
+            actual = actual.siguiente
+        return nueva_lista
 
     def __iter__(self):
         actual = self.primero

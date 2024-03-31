@@ -15,6 +15,7 @@ from tkinter import messagebox
 import webbrowser
 from tkinter import filedialog
 from xml.dom import minidom
+import graphviz
 
 #instancia global de la lista maquetas
 lista_maquetas=ListaMaquetas()
@@ -167,11 +168,26 @@ class Interfaz:
             
     def graficarMaqueta(self):
         nombre=self.txtNompreMaqueta.get()
+        ##se crea un nuevo objeto
         maquetaG=lista_maquetas.buscar_maqueta_nombre(nombre)
 
+        txtEstructuras=maquetaG.lista_estructuras.txt_estructura()
+        print(txtEstructuras)
+
+        nueva_lista_estructuras=ListaEstructuras()
+        for i in range(maquetaG.filas):
+            for j in range(maquetaG.columnas):
+                indice = i * maquetaG.columnas + j
+                if indice < len(txtEstructuras):
+                    nueva_lista_estructuras.insertar_estructura(Estructura(i,j,txtEstructuras[indice]))
+
+        nuevoObjetoMaqueta=Maqueta(maquetaG.nombre,maquetaG.filas,maquetaG.columnas,
+                                   maquetaG.entrada,maquetaG.lista_objetivos,
+                                   nueva_lista_estructuras)
+       
         if maquetaG:
             #AQUI SE GRAFICA LA MAQUETA
-            self.reemplazarYgraficar(maquetaG)
+            self.reemplazarYgraficar(nuevoObjetoMaqueta)
             #####
         elif nombre=="":
             messagebox.showerror("Error", f"No se ha ingresado ningun nombre")
@@ -210,13 +226,41 @@ class Interfaz:
         for objetivo in lista_objetivos:
             if lista_estructurasM.devolver_caracter(objetivo.fila,objetivo.columna)=="-":
                 lista_estructurasM.reemplazarCaracter(objetivo.fila, objetivo.columna, objetivo.nombre)
+                
+                #funcion graficar
             elif lista_estructurasM.devolver_caracter(objetivo.fila,objetivo.columna)=="*":
                 messagebox.showerror("Error", "No se puede colocar un objetivo en una pared")
             elif lista_estructurasM.devolver_caracter(objetivo.fila,objetivo.columna)=="+":
                 messagebox.showerror("Error", "No se puede colocar un objetivo en el inicio")
             else:
                 messagebox.showerror("Error", "Objetivo en posicion incorrecta")
-    
-        
+
+        self.graficarConGraphviz(lista_estructurasM,filasM,columnasM,"MaquetaInicial.dot")
 
         lista_estructurasM.imprimir_lista_estructuras()
+    
+    def graficarConGraphviz(self,lista_estructuras,filas,columnas,nombreArchivo):
+        
+        #texto="digraph G {\n node [shape=plaintext];\nlabel=\"Tablero facilito\";\nsome_node [\nlabel=<\n<table border=\"1\" cellborder=\"0\" cellspacing=\"0\" width=\"100%\" height=\"100%\">\n"
+        texto="<<table>"
+        for i in range(filas):
+            texto+="<tr>\n"#fila
+            for j in range(columnas):
+                if lista_estructuras.devolver_caracter(i,j)=="*":#pared
+                    texto+=f"<td bgcolor='black' width='25' height='25'>"+str(lista_estructuras.devolver_caracter(i,j))+"</td>\n" #columna
+                elif lista_estructuras.devolver_caracter(i,j)=="-": #camino
+                    texto+=f"<td bgcolor='white' width='25' height='25'>"+str(lista_estructuras.devolver_caracter(i,j))+"</td>\n"
+                elif lista_estructuras.devolver_caracter(i,j)=="+":#inicio
+                    texto+=f"<td bgcolor='lime' width='25' height='25'>"+str(lista_estructuras.devolver_caracter(i,j))+"</td>\n"
+                elif lista_estructuras.devolver_caracter(i,j)=="#": #solucion
+                    texto+=f"<td bgcolor='aqua' width='25' height='25'>"+str(lista_estructuras.devolver_caracter(i,j))+"</td>\n"
+                else: #objetivos
+                    texto+=f"<td bgcolor='tomato' width='25' height='25'>"+str(lista_estructuras.devolver_caracter(i,j))+"</td>\n"
+            texto+="</tr>\n"
+        texto+="</table>>"
+
+        dot = graphviz.Graph(filename=nombreArchivo,format="svg")
+        dot.attr('node', shape='plaintext')
+        dot.node('tab', texto)
+
+        dot.render(directory='', view=True)
