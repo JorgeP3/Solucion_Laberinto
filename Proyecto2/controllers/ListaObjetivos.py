@@ -33,6 +33,14 @@ class ListaObjetivos:
             actual=actual.siguiente
         return text
     
+    def clonar(self):
+        nueva_lista = ListaObjetivos()  
+        actual = self.primero
+        while actual:
+            nueva_lista.insertar_objetivo(actual.objetivo)  
+            actual = actual.siguiente
+        return nueva_lista
+    
     def __iter__(self):
         actual = self.primero
         while actual:

@@ -25,12 +25,12 @@ class ListaEstructuras:
     def reemplazarCaracter(self,fila,columna,caracter):
         actual=self.primero
         while actual:
-            if actual.estructura.fila==fila and actual.estructura.columna==columna and actual.estructura.caracter=="-":             
+            if actual.estructura.fila==fila and actual.estructura.columna==columna: #and actual.estructura.caracter=="-":             
                 actual.estructura.caracter=caracter
                 print("se actualizo el caracter")
                 return
             actual=actual.siguiente
-        messagebox.showerror("Error", "No se encontro la coordenada")
+        #messagebox.showerror("Error", "No se encontro la coordenada")
 
 
     def txt_estructura(self):
@@ -47,6 +47,8 @@ class ListaEstructuras:
             if actual.estructura.fila==fila and actual.estructura.columna==columna:
                 return actual.estructura.caracter
             actual=actual.siguiente
+        return "*" #modificacion
+
     def clonar(self):
         nueva_lista = ListaEstructuras()  # Creamos una nueva instancia de ListaMaquetas
         actual = self.primero
