@@ -233,7 +233,7 @@ class Interfaz:
             else:
                 messagebox.showerror("Error", "Objetivo en posicion incorrecta")
 
-        self.graficarConGraphviz(lista_estructurasM,filasM,columnasM,"MaquetaInicial.dot")
+        self.graficarConGraphviz(lista_estructurasM,filasM,columnasM,"MaquetaInicial")
 
         #lista_estructurasM.imprimir_lista_estructuras()
     
@@ -267,6 +267,7 @@ class Interfaz:
         nombre=self.txtNompreMaqueta.get()
         
         maquetaG=lista_maquetas.buscar_maqueta_nombre(nombre)
+        maquetaD=lista_maquetas.buscar_maqueta_nombre(nombre)
 
         filasM=maquetaG.filas
         columnasM=maquetaG.columnas
@@ -291,56 +292,29 @@ class Interfaz:
         
         for objetivo in lista_objetivos:#por cada objetivo de la lista objetivos, se remplaza en la lista de estructuras
             if nueva_lista_estructuras.devolver_caracter(objetivo.fila,objetivo.columna)=="-":
-                nueva_lista_estructuras.reemplazarCaracter(objetivo.fila, objetivo.columna, objetivo.nombre)
+                                                                                         #NOTA2 se reemplazan los objetivos por paredes "*"                 
+                nueva_lista_estructuras.reemplazarCaracter(objetivo.fila, objetivo.columna, "*") #objetivo.nombre
         
 
 
         for objetivo in lista_objetivos:
-            
-
+            #NOTA3 antes de aplicar el algoritmo de busqueda, se cambia por su nombre original (A,B,C etc)
+            nueva_lista_estructuras.reemplazarCaracter(objetivo.fila, objetivo.columna,objetivo.nombre )
+            if self.buscarCamino(filaEntrada,columnaEntrada,nueva_lista_estructuras,objetivo.nombre)==False:
+                messagebox.showerror("Error", "no se encontro el objetivo «"+objetivo.nombre+"»")
+                break   
             self.buscarCamino(filaEntrada,columnaEntrada,nueva_lista_estructuras,objetivo.nombre)
             filaEntrada=objetivo.fila
             columnaEntrada=objetivo.columna
 
        
-        nueva_lista_estructuras.reemplazarCaracter(filaEntrada,columnaEntrada,"+")
+        nueva_lista_estructuras.reemplazarCaracter(maquetaD.entrada.fila,maquetaD.entrada.columna,"+")
         
         for objetivo in lista_objetivos:#por cada objetivo de la lista objetivos, se remplaza en la lista de estructuras
                 nueva_lista_estructuras.reemplazarCaracter(objetivo.fila, objetivo.columna, objetivo.nombre)
         
-        self.graficarConGraphviz(nueva_lista_estructuras,filasM,columnasM,"Solucion")
+        self.graficarConGraphviz(nueva_lista_estructuras,filasM,columnasM,"MaquetaSolucion")
 
-        """
-        if self.buscarCamino(filaEntrada,columnaEntrada,nueva_lista_estructuras,"A")==True:
-            self.buscarCamino(filaEntrada,columnaEntrada,nueva_lista_estructuras,"A")
-            self.graficarConGraphviz(nueva_lista_estructuras,filasM,columnasM,"Solucion")
-        else:
-            messagebox.showerror("Error", "El laberinto no tiene solucion")
-
-        """
-        
-
-        '''
-        for objetivo in lista_objetivos:
-            
-            if nueva_lista_estructuras.devolver_caracter(filaEntrada,columnaEntrada-1)=="-":#izquierda
-                lista_solucion.insertar_estructura(filaEntrada,columnaEntrada-1,"#")
-            elif nueva_lista_estructuras.devolver_caracter(filaEntrada,columnaEntrada-1)=="-":#izquierda
-                lista_solucion.insertar_estructura(filaEntrada,columnaEntrada-1,"#")
-            elif nueva_lista_estructuras.devolver_caracter(filaEntrada,columnaEntrada-1)=="-":#izquierda
-                lista_solucion.insertar_estructura(filaEntrada,columnaEntrada-1,"#")
-            elif nueva_lista_estructuras.devolver_caracter(filaEntrada,columnaEntrada-1)=="-":#izquierda
-                lista_solucion.insertar_estructura(filaEntrada,columnaEntrada-1,"#")
-            else:
-                print("no tiene solucion")
-        '''
-      
-        #nueva_lista_estructuras.imprimir_lista_estructuras()        
-        ##se crea un nuevo objeto
-        nuevoObjetoMaqueta=Maqueta(maquetaG.nombre,maquetaG.filas,maquetaG.columnas,
-                                   maquetaG.entrada,maquetaG.lista_objetivos,
-                                   nueva_lista_estructuras)
-        
     #pared=*    camino=-  inicio=+  solucion=# Objetivos=char
         
     def buscarCamino(self,fila,columna,nueva_lista_estructuras,objetivo):
@@ -348,8 +322,13 @@ class Interfaz:
             return True
         else:
             if nueva_lista_estructuras.devolver_caracter(fila,columna)!="*" and nueva_lista_estructuras.devolver_caracter(fila,columna)!="#":
-                nueva_lista_estructuras.reemplazarCaracter(fila,columna, "#")
-                if self.buscarCamino(fila-1,columna,nueva_lista_estructuras,objetivo) or self.buscarCamino(fila+1,columna,nueva_lista_estructuras,objetivo) or self.buscarCamino(fila,columna-1,nueva_lista_estructuras,objetivo) or self.buscarCamino(fila,columna+1,nueva_lista_estructuras,objetivo):
+                nueva_lista_estructuras.reemplazarCaracter(fila,columna, "#")                                                               
+                if  (self.buscarCamino(fila-1,columna,nueva_lista_estructuras,objetivo) or #abajo
+                     self.buscarCamino(fila+1,columna,nueva_lista_estructuras,objetivo) or #arriba
+                     self.buscarCamino(fila,columna-1,nueva_lista_estructuras,objetivo) or #izquierda
+                     self.buscarCamino(fila,columna+1,nueva_lista_estructuras,objetivo)):  #derecha
                     return True
                 else:
                     nueva_lista_estructuras.reemplazarCaracter(fila,columna, "-")
+        return False
+    
