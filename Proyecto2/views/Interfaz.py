@@ -29,6 +29,7 @@ class Interfaz:
 
         self.root.title("Ventana Principal")
         self.root.geometry("600x450")
+        self.root.configure(bg="lightblue")
         #self.lista_maquetas=ListaMaquetas() tamvbien pude definir aqui la lista
         #y acceder a ella desde cualquier metodo utilizando "self"
         self.cargarWidgets()
@@ -47,33 +48,36 @@ class Interfaz:
         btnAyuda=tk.Button(self.root,text="Ayuda",command=self.ayuda)
         btnAyuda.place(x=550,y=5)
 
-        lblEntrada=tk.Label(self.root,text="Listado de maquetas")
+        lblEntrada=tk.Label(self.root,text="Listado de maquetas",bg="lightblue", fg="black")
         lblEntrada.place(x=10,y=50)
 
         self.txtEntrada=tk.Text(self.root,width=40, height=20)
         self.txtEntrada.place(x=10,y=80)
 
         #FRAME
-        frmFrameGestionar=tk.Frame(self.root,width=220, height=220,borderwidth=2, relief="ridge", bg="lightgrey")
-        frmFrameGestionar.place(x=350,y=125)
+        frmFrameGestionar=tk.Frame(self.root,width=220, height=325,borderwidth=2, relief="ridge", bg="lightgrey")
+        frmFrameGestionar.place(x=350,y=80)
 
-        lblframe=tk.Label(frmFrameGestionar, text="Gestionar maqueta")
-        lblframe.place(x=60,y=5)
+        lblframe=tk.Label(frmFrameGestionar, text="Gestionar maqueta",bg="lightgrey", fg="black",font=("Arial", 11, "bold"))
+        lblframe.place(x=45,y=5)
 
-        lblNombre=tk.Label(frmFrameGestionar, text="Nombre de la maqueta",)
-        lblNombre.place(x=50,y=40)
+        lblNombre=tk.Label(frmFrameGestionar, text="Nombre de la maqueta",bg="lightgrey", fg="black")
+        lblNombre.place(x=50,y=30)
 
         self.txtNompreMaqueta=tk.Entry(frmFrameGestionar,width=33)
-        self.txtNompreMaqueta.place(x=7,y=70)
+        self.txtNompreMaqueta.place(x=7,y=60)
 
         btnGraficarMaqueta=tk.Button(frmFrameGestionar,text="Graficar Maqueta",command=self.graficarMaqueta)
-        btnGraficarMaqueta.place(x=5,y=95)
+        btnGraficarMaqueta.place(x=5,y=85)
 
         btnGraficarMaqueta=tk.Button(frmFrameGestionar,text="Graficar Solucion",command=self.graficarSolucion)
-        btnGraficarMaqueta.place(x=110,y=95)
+        btnGraficarMaqueta.place(x=110,y=85)
 
         btnOrdebarMaqueta=tk.Button(frmFrameGestionar,text="Ordenar Maquetas \npor nombre",command=self.ordenarLista)
-        btnOrdebarMaqueta.place(x=55,y=125)
+        btnOrdebarMaqueta.place(x=55,y=115)
+
+        self.txtMaquetaI=tk.Text(frmFrameGestionar,width=24, height=9)
+        self.txtMaquetaI.place(x=10,y=165)
 
     def abrirArchivo(self):
         try:
@@ -157,6 +161,7 @@ class Interfaz:
         global lista_maquetas
         lista_maquetas = ListaMaquetas()
         self.txtEntrada.delete("1.0", tk.END)
+        self.txtMaquetaI.delete("1.0", tk.END)
     
     def actualizar(self):
         self.txtEntrada.delete("1.0", tk.END)  # Limpiar el contenido existente
@@ -172,22 +177,27 @@ class Interfaz:
         
         maquetaG=lista_maquetas.buscar_maqueta_nombre(nombre)
 
-        txtEstructuras=maquetaG.lista_estructuras.txt_estructura()
-        print(txtEstructuras)
-
-        nueva_lista_estructuras=ListaEstructuras()
-        for i in range(maquetaG.filas):
-            for j in range(maquetaG.columnas):
-                indice = i * maquetaG.columnas + j
-                if indice < len(txtEstructuras):
-                    nueva_lista_estructuras.insertar_estructura(Estructura(i,j,txtEstructuras[indice]))
-        ##se crea un nuevo objeto
-        nuevoObjetoMaqueta=Maqueta(maquetaG.nombre,maquetaG.filas,maquetaG.columnas,
-                                   maquetaG.entrada,maquetaG.lista_objetivos,
-                                   nueva_lista_estructuras)
+        
        
         if maquetaG:
-            #AQUI SE GRAFICA LA MAQUETA
+            txtEstructuras=maquetaG.lista_estructuras.txt_estructura()
+            try:
+                self.txtMaquetaI.delete("1.0", tk.END)  # Limpiar el contenido existente
+                self.txtMaquetaI.insert(tk.END, maquetaG.txt_maqueta())
+            except:
+                pass
+            #print(txtEstructuras)
+
+            nueva_lista_estructuras=ListaEstructuras()
+            for i in range(maquetaG.filas):
+                for j in range(maquetaG.columnas):
+                    indice = i * maquetaG.columnas + j
+                    if indice < len(txtEstructuras):
+                        nueva_lista_estructuras.insertar_estructura(Estructura(i,j,txtEstructuras[indice]))
+            ##se crea un nuevo objeto
+            nuevoObjetoMaqueta=Maqueta(maquetaG.nombre,maquetaG.filas,maquetaG.columnas,
+                                    maquetaG.entrada,maquetaG.lista_objetivos,
+                                    nueva_lista_estructuras)
             self.reemplazarYgraficar(nuevoObjetoMaqueta)
             #####
         elif nombre=="":
