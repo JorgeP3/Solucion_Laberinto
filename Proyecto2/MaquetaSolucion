@@ -10,12 +10,6 @@ graph {
 <td bgcolor='black' width='25' height='25'>*</td>
 <td bgcolor='black' width='25' height='25'>*</td>
 <td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
 </tr>
 <tr>
 <td bgcolor='black' width='25' height='25'>*</td>
@@ -23,99 +17,8 @@ graph {
 <td bgcolor='black' width='25' height='25'>*</td>
 <td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
 <td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-</tr>
-<tr>
-<td bgcolor='black' width='25' height='25'>*</td>
 <td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-</tr>
-<tr>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-</tr>
-<tr>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-</tr>
-<tr>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-</tr>
-<tr>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='tomato' width='25' height='25'>C</td>
 <td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
 <td bgcolor='black' width='25' height='25'>*</td>
 </tr>
@@ -123,43 +26,80 @@ graph {
 <td bgcolor='black' width='25' height='25'>*</td>
 <td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
 <td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
 <td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
 <td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
-<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
 <td bgcolor='black' width='25' height='25'>*</td>
 <td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
 <td bgcolor='black' width='25' height='25'>*</td>
 </tr>
 <tr>
 <td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
-<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
 <td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
 <td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
 <td bgcolor='tomato' width='25' height='25'>A</td>
 <td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
 <td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+</tr>
+<tr>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+</tr>
+<tr>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+</tr>
+<tr>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
+<td bgcolor='tomato' width='25' height='25'>B</td>
+<td bgcolor='aqua' width='25' height='25'><font color='aqua'>#</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+</tr>
+<tr>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+</tr>
+<tr>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
+<td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
+<td bgcolor='black' width='25' height='25'>*</td>
 <td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
 <td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
 <td bgcolor='white' width='25' height='25'><font color='white'>-</font></td>
 <td bgcolor='black' width='25' height='25'>*</td>
 </tr>
 <tr>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
-<td bgcolor='black' width='25' height='25'>*</td>
 <td bgcolor='black' width='25' height='25'>*</td>
 <td bgcolor='black' width='25' height='25'>*</td>
 <td bgcolor='black' width='25' height='25'>*</td>

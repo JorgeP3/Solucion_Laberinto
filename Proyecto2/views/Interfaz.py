@@ -331,7 +331,9 @@ class Interfaz:
         if nueva_lista_estructuras.devolver_caracter(fila,columna)==objetivo:
             return True
         else:
-            if nueva_lista_estructuras.devolver_caracter(fila,columna)!="*" and nueva_lista_estructuras.devolver_caracter(fila,columna)!="#":
+            if (nueva_lista_estructuras.devolver_caracter(fila,columna)!="*" and 
+                nueva_lista_estructuras.devolver_caracter(fila,columna)!="#"):
+
                 nueva_lista_estructuras.reemplazarCaracter(fila,columna, "#")                                                               
                 if  (self.buscarCamino(fila-1,columna,nueva_lista_estructuras,objetivo) or #abajo
                      self.buscarCamino(fila+1,columna,nueva_lista_estructuras,objetivo) or #arriba
