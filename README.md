@@ -34,6 +34,7 @@ This solution was built with:
 
 ### Graphical User Interface (Tkinter)
 The application features a simple and intuitive GUI built with Tkinter. Users can load XML files, visualize mazes, and trigger the solving algorithm with just a few clicks.
+
 ![Tkinter UI Screenshot](Image/GUI.png)
 
 ### Input Format
