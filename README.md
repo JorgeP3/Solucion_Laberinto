@@ -74,10 +74,12 @@ The application features a simple and intuitive GUI built with Tkinter. Users ca
 
 ### Maze Layout Preview (Graphviz)
 This is the initial representation of the maze loaded from the XML input. It highlights walls, paths, entry point, and the objectives to collect.
+
 ![Maze Preview](Image/maqueta1Preview.png)
 
 ### Solved Maze Path (Graphviz)
 After processing the maze, the algorithm computes a valid path to collect the objectives in the required order without reusing any path segment.
+
 ![Solved Maze Path](Image/maquete1Solve.png)
 
 ### Technologies & Techniques
