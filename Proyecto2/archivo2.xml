@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<config>
+    <maquetas>
+        <maqueta>
+            <nombre> marqueta_inicial </nombre>
+            <filas> 10 </filas>
+            <columnas> 10 </columnas>
+            <entrada>
+                <fila> 1 </fila>
+                <columna> 3 </columna>
+            </entrada>
+            <objetivos>
+                <objetivo>
+                    <nombre> P </nombre>
+                    <fila> 4 </fila>
+                    <columna> 1</columna>
+                </objetivo>
+                <objetivo>
+                    <nombre>G</nombre>
+                    <fila> 9 </fila>
+                    <columna> 4 </columna>
+                </objetivo>
+                <objetivo>
+                    <nombre> R </nombre>
+                    <fila> 7</fila>
+                    <columna> 8 </columna>
+                </objetivo>
+                <objetivo>
+                    <nombre> J </nombre>
+                    <fila> 0 </fila>
+                    <columna> 5 </columna>
+                </objetivo>
+                <objetivo>
+                    <nombre> M </nombre>
+                    <fila> 5 </fila>
+                    <columna> 4 </columna>
+                </objetivo>
+            </objetivos>
+            <estructura> --***----*-**-*-*-**--*-*---***---*-*--**-***-**-**-*----*-**-*-**-*-**---*--*-**-***-**-**--------* </estructura>
+        </maqueta>
+        <maqueta>
+            <nombre> sin_solucion </nombre>
+            <filas> 11 </filas>
+            <columnas> 13 </columnas>
+            <entrada>
+                <fila> 4 </fila>
+                <columna> 5 </columna>
+            </entrada>
+            <objetivos>
+                <objetivo>
+                    <nombre> H </nombre>
+                    <fila> 6 </fila>
+                    <columna> 5 </columna>
+                </objetivo>
+                <objetivo>
+                    <nombre> O </nombre>
+                    <fila> 7 </fila>
+                    <columna> 7 </columna>
+                </objetivo>
+                <objetivo>
+                    <nombre> L </nombre>
+                    <fila> 4 </fila>
+                    <columna> 7 </columna>
+                </objetivo>
+                <objetivo>
+                    <nombre> A </nombre>
+                    <fila> 1 </fila>
+                    <columna> 5 </columna>
+                </objetivo>
+            </objetivos>
+            <estructura> ---**----***--*----**-*-*--****------*--********--*---*-----*--------***-*-*-*--*-*---*-*-**-*-*-*---*-**-*----**---**-****-***--**-----------* </estructura>
+        </maqueta>
+    </maquetas>
+</config>

@@ -335,10 +335,10 @@ class Interfaz:
                 nueva_lista_estructuras.devolver_caracter(fila,columna)!="#"):
 
                 nueva_lista_estructuras.reemplazarCaracter(fila,columna, "#")                                                               
-                if  (self.buscarCamino(fila-1,columna,nueva_lista_estructuras,objetivo) or #abajo
+                if  (self.buscarCamino(fila,columna+1,nueva_lista_estructuras,objetivo) or self.buscarCamino(fila-1,columna,nueva_lista_estructuras,objetivo) or #abajo
                      self.buscarCamino(fila+1,columna,nueva_lista_estructuras,objetivo) or #arriba
-                     self.buscarCamino(fila,columna-1,nueva_lista_estructuras,objetivo) or #izquierda
-                     self.buscarCamino(fila,columna+1,nueva_lista_estructuras,objetivo)):  #derecha
+                     self.buscarCamino(fila,columna-1,nueva_lista_estructuras,objetivo) #izquierda
+                     ):  #derecha
                     return True
                 else:
                     nueva_lista_estructuras.reemplazarCaracter(fila,columna, "-")
